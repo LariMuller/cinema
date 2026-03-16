@@ -28,4 +28,8 @@ public class FilmeController {
 		filmeDao.atualizar(filme);
 	}
 
+    public Filme pesquisarFilmeID(long id) {
+        return filmeDao.pesquisarFilmeID(id);
+	}
+
 }

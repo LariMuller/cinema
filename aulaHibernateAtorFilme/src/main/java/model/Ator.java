@@ -44,4 +44,12 @@ public class Ator{
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
+
+	public Filme getFilme(){
+		return filme;
+	}
+
+	public void setFilme(Filme f) {
+		this.filme = f;	
+	}
 }

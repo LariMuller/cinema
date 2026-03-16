@@ -6,10 +6,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import model.Filme;
 
-public class FilmeDao implements IFilmeDao{
+public class FilmeDao implements IFilmeDao {
 
-	EntityManagerFactory mf = Persistence.createEntityManagerFactory ("HibJPA");
-
+	EntityManagerFactory mf = Persistence.createEntityManagerFactory("HibJPA");
 
 	public Filme pesquisar(String filme) {
 		return null;
@@ -21,7 +20,8 @@ public class FilmeDao implements IFilmeDao{
 		em.close();
 		return filmes;
 	}
-	public List<Filme> apenasUmFilme (String titulo){
+
+	public List<Filme> apenasUmFilme(String titulo) {
 		EntityManager em = mf.createEntityManager();
 		List<Filme> filmes = em.createQuery("SELECT f FROM Filme f WHERE f.titulo LIKE :titulo", Filme.class)
 				.setParameter("titulo", "%" + titulo + "%")
@@ -37,6 +37,7 @@ public class FilmeDao implements IFilmeDao{
 		em.getTransaction().commit();
 		em.close();
 	}
+
 	public void remover(long id) {
 		EntityManager em = mf.createEntityManager();
 		em.getTransaction().begin();
@@ -55,5 +56,11 @@ public class FilmeDao implements IFilmeDao{
 		em.getTransaction().commit();
 		em.close();
 	}
-	
+
+	public Filme pesquisarFilmeID(Long id) {
+		EntityManager em = mf.createEntityManager();
+		Filme filme = em.find(Filme.class, id);
+		em.close();
+		return filme;
+	}
 }

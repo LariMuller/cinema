@@ -11,4 +11,5 @@ public interface IAtorDAO {
 	public List<Ator> lista(); 
 	public void atualizar(Ator ator);
 	public List<Ator> apenasUmAtor (String titulo);
+	public void conectarFilme(Ator ator, long idF);
 }
